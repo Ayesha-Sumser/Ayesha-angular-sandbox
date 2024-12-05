@@ -1,0 +1,31 @@
+@if (loginForm && !islogin){
+    <form [formGroup]="loginForm">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <input type="text" placeholder="Email" class="form-control me-2" formControlName="email">
+            </div>
+            <div class="col-auto">
+              <input type="password" id="inputPassword6" placeholder="Password" class="form-control" formControlName="password">
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-success me-2" (click)="login()">
+                <i class="fa fa-sign-in me-2"></i>
+                Login
+               </button>
+           </div>
+          </div>
+    </form>
+}
+@else{
+  <p class="mb-0">
+    Welcome {{user.first_name}} {{user.last_name}}! 
+     @if (permission.hasRole(['admin'])) {
+      <i class="fa fa-star"></i>
+      }
+    <button class="btn btn-primary ms-2" (click)="logout()">
+      <i class="fa fa-power-off"></i>
+      Logout
+    </button>
+  </p>
+  
+}

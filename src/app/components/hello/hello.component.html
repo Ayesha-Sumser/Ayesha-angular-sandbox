@@ -1,0 +1,54 @@
+<p>hello works!</p>
+<div class="container my-4">
+ <div class="row">
+    <div class="col">
+        <p>Hello my name is {{myName}} - {{5*5}}</p>
+    </div>
+    <div class="col">2</div>
+</div>  
+
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <img src="https://picsum.photos/200/300" alt="" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">My Title</h5>
+                <p class="card-text">{{myName}}</p>
+                <input type="text" class="form-control" #inputName>
+                <button class="btn btn-primary" (click)="updateName(inputName.value)">Update</button>
+                <hr>
+                <input type="text" class="form-control" [(ngModel)]="myText">
+                <p>{{myText}}</p>
+                        
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                  <h5 class="card-title">Calculator</h5>
+                  <div class="row">
+                    <div class="col-5">
+                        <input title="First number" type="number" class="form-control" [(ngModel)]="numA">
+                    </div>
+                    <div class="col-2">
+                        <select title="select type" name="" id="" class="form-control" [(ngModel)]="symbol">
+                            <option selected value="addition">+</option>
+                            <option value="substraction">-</option>
+                            <option value="multiplying">*</option>
+                            <option value="divide">/</option>
+                        </select>
+                    </div>
+                    <div class="col-5">
+                        <input title="Second number" type="number" class="form-control" [(ngModel)]="numB">
+                    </div> 
+                    <div class="d-grid gap-2">
+                      <button class="btn btn-danger mt-3" (click)="equal()">Calculate</button>
+                      <p>Result: {{result}}</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "font-awesome/css/font-awesome.css";
+
+$light-blue: #add8e6;
+$dark: #000; //either 3 zero or six zero
+$white: #fff;
+$danger: rgb(220, 53, 69);
+$purple: purple;
+$cyan: cyan;
+$pink: pink;
+
+
+.tooltip {
+  position: absolute;
+
+  &-arrow {
+    position: absolute;
+  }
+}
+
+.theme-blue {
+  background-color: $light-blue;
+  color: $dark;
+}
+
+.theme-dark {
+  background-color: $dark;
+
+  .nav-link,
+  .navbar_brand {
+    color: $white !important;
+
+  }
+
+  color: $white;
+}
+
+.theme-danger {
+  background-color: $danger;
+
+  .nav-link,
+  .navbar_brand {
+    color: $white !important;
+
+  }
+
+  color: $white;
+
+}
+
+.theme-purple {
+  background-color: $purple;
+
+  .nav-link,
+  .navbar_brand {
+    color: $white !important;
+
+  }
+
+  color: $white;
+
+}
+
+
+.theme-cyan{
+  background-color: $cyan;
+
+  .nav-link,
+  .navbar_brand {
+    color: $white !important;
+
+  }
+
+  color: $white;
+
+}
+
+
+.theme-pink{
+  background-color: $pink;
+
+  .nav-link,
+  .navbar_brand {
+    color: $white !important;
+
+  }
+
+  color: $white;
+
+}
+
+
+.card-light {
+  min-height: 40px;
+  min-width: 30%;
+  height: auto !important;
+  &.dotted {
+    border: 2px dashed #eeeeee;
+    padding: 2.8em 6em;
+    background-color: transparent;
+  }
+}
+
+::-ms-reveal {
+  display: none
+}

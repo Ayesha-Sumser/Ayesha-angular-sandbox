@@ -1,0 +1,2 @@
+<!-- <ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading> -->
+ <ngx-loading [show]="(loading$ | async)!" [config]="{fullScreenBackdrop: true}"></ngx-loading>

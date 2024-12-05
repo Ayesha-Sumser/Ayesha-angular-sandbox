@@ -1,0 +1,19 @@
+<div class="container my-5">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="input-group ">
+                <span class="input-group-text" (click)="searchCar()">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search car" [(ngModel)]="searchText">
+                <span class="input-group-text" (click)="clearSearch()">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    @if ((filterCars$|async)?.length) {
+        <app-card-list-template [list]="(filterCars$|async)!"></app-card-list-template>
+    }
+
+</div>

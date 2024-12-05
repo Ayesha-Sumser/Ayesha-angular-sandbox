@@ -1,0 +1,64 @@
+<div class="row g-4" 
+[ngClass]="{
+    'row-cols-3': isCar(list[0]),
+    'row-cols-2': isUser(list[0]) || isStarship(list[0]),
+}">
+    @for (item of list; track $index){
+        <div class="col">
+            <div class="card h-100" [ngClass]="{'bg-success':!($index%2), 'bg-warning':$index%2}">
+                <!-- @if(item.image_car){ -->
+                @if(isCar(item)){
+                <img [src]="item.image_car" alt="{{item.name}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{item.name}}
+                        <app-modal [item]="item"></app-modal>
+                    </h5>
+                    <p class="card-text">{{item.description}}</p>
+                    <!-- <p class="card-text">{{item.}}</p> -->
+                    <!-- <button class="btn btn-sm btn-danger" (click)="deleteCar(item._id)">Delete</button> -->
+                     <button class="btn btn-sm btn-primary" [routerLink]="['/car/edit/',item.slug]">
+                        <i class="fa fa-pencil me-2"></i>
+                        Edit
+                    </button>
+                    <button type="button" title="view" class="btn btn-danger btn-sm ms-2" (click)="setFavorite(item._id)">
+                        <i 
+                            [class.fa-heart]="favorites.has(item._id)" 
+                            [class.fa-heart-o]="!favorites.has(item._id)" 
+                            class="fa">
+                        </i>
+                    </button>
+
+                </div>
+            } 
+            @if(isUser(item) ){
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{item.first_name}} 
+                        {{item.last_name}} 
+                        @if(permissionService.hasRole(['admin']) || (permissionService.hasRole(['user']) && item._id == user?._id) ){
+                        <span class="btn btn-info btn-sm" [routerLink]="['/users/view/',item._id]">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    }
+                    </h5>
+                    <p class="card-text">Username: {{item.username}}</p>
+                    <p class="card-text">Email: {{item.email}}</p>
+                    <p class="card-text">Phone: {{item.phone}}</p>
+                    <p class="card-text">Role:  {{item.role}}</p>
+                </div>
+            }
+            @if(isStarship(item)){
+                <div class="card-body">
+                    <div class="card-title">
+                        {{item.name}}
+                    </div>
+                    <button type="button" title="view" class="btn btn-primary" (click)="passStarship(item)">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </div>
+            }
+            </div>
+        </div>
+    }
+</div>

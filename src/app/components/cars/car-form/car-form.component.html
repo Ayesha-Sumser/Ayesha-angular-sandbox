@@ -1,0 +1,341 @@
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            @if (!carSlug){
+                <span>
+                    <i class="fa fa-plus"></i>
+                    Add Car Details            
+                </span>
+            } @else {
+                <span>
+                    <i class="fa fa-pencil"></i>
+                    Edit Car Details            
+                </span>
+            }
+        </div>
+        @if (carForm){
+            <div class="card-body">
+                <form [formGroup]="carForm">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Validation for input name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    ngValid
+                                    @if (carForm.controls['name'].valid){
+                                        <span><i class="fa fa-check-circle text-success ms-2"></i></span>
+                                    }
+                                </td>
+                                <td>
+                                    ngInvalid
+                                    @if (carForm.controls['name'].invalid){
+                                        <span><i class="fa fa-check-circle text-success ms-2"></i></span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ngDirty
+                                    @if (carForm.controls['name'].dirty){
+                                        <span><i class="fa fa-check-circle text-success ms-2"></i></span>
+                                    }
+                                </td>
+                                <td>
+                                    ngPristine
+                                    @if (carForm.controls['name'].pristine){
+                                        <span><i class="fa fa-check-circle text-success ms-2"></i></span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ngTouched
+                                    @if (carForm.controls['name'].touched){
+                                        <span><i class="fa fa-check-circle text-success ms-2"></i></span>
+                                    }
+                                </td>
+                                <td>
+                                    ngUntouched
+                                    @if (carForm.controls['name'].untouched){
+                                        <span><i class="fa fa-check-circle text-success ms-2"></i></span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="name" formControlName="name" 
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['name'].invalid && carForm.controls['name'].dirty,
+                            'is-valid':carForm.controls['name'].valid
+                        }" >
+                        @if (carForm.controls['name'].invalid && carForm.controls['name'].dirty){
+                            <span class="text-danger">Name is required!</span>
+                        }
+                      </div> 
+
+                      <div class="mb-3">
+                        <label for="ref" class="form-label">Ref <sup class="text-danger">*</sup> </label>
+
+                        @if (carSlug){
+                            <input type="text" class="form-control text-muted" id="ref" formControlName="ref" readonly 
+                            [ngClass]="{
+                                'is-invalid':carForm.controls['ref'].invalid && carForm.controls['ref'].dirty,
+                                'is-valid':carForm.controls['ref'].valid
+                            }" >
+                        } @else {
+                            <input type="text" class="form-control" id="ref" formControlName="ref"
+                            [ngClass]="{
+                                'is-invalid':carForm.controls['ref'].invalid && carForm.controls['ref'].dirty,
+                                'is-valid':carForm.controls['ref'].valid
+                            }" >
+                        }
+
+                        @if (carForm.controls['ref'].invalid && carForm.controls['ref'].dirty){
+                            <span class="text-danger">Ref is required!</span>
+                        }
+                      </div> 
+
+                      <div class="mb-3">
+                        <label for="body_type" class="form-label">Body Type <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="body_type" formControlName="body_type"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['body_type'].invalid && carForm.controls['body_type'].dirty,
+                            'is-valid':carForm.controls['body_type'].valid
+                        }" >
+                        @if (carForm.controls['body_type'].invalid && carForm.controls['body_type'].dirty){
+                            <span class="text-danger">Body Type is required!</span>
+                        }
+                      </div> 
+
+                      <div class="mb-3">
+                        <label for="engine" class="form-label">Engine <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="engine" formControlName="engine"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['engine'].invalid && carForm.controls['engine'].dirty,
+                            'is-valid':carForm.controls['engine'].valid
+                        }" >
+                        @if (carForm.controls['engine'].invalid && carForm.controls['engine'].dirty){
+                            <span class="text-danger">Engine is required!</span>
+                        }
+                      </div> 
+
+                      <div class="mb-3">
+                        <label for="mileage" class="form-label">Mileage <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="mileage" formControlName="mileage"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['mileage'].invalid && carForm.controls['mileage'].dirty,
+                            'is-valid':carForm.controls['mileage'].valid
+                        }" >
+                        @if (carForm.controls['mileage'].invalid && carForm.controls['mileage'].dirty){
+                            <span class="text-danger">Mileage is required!</span>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="fuel_type" class="form-label">Fuel Type <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="fuel_type" formControlName="fuel_type"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['fuel_type'].invalid && carForm.controls['fuel_type'].dirty,
+                            'is-valid':carForm.controls['fuel_type'].valid
+                        }" >
+                        @if (carForm.controls['fuel_type'].invalid && carForm.controls['fuel_type'].dirty){
+                            <span class="text-danger">Fuel Type is required!</span>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="transmission" class="form-label">Transmission <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="transmission" formControlName="transmission"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['transmission'].invalid && carForm.controls['transmission'].dirty,
+                            'is-valid':carForm.controls['transmission'].valid
+                        }" >
+                        @if (carForm.controls['transmission'].invalid && carForm.controls['transmission'].dirty){
+                            <span class="text-danger">Transmission is required!</span>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="door_count" class="form-label">Door Count <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="door_count" formControlName="door_count"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['door_count'].invalid && carForm.controls['door_count'].dirty,
+                            'is-valid':carForm.controls['door_count'].valid
+                        }" >
+                        @if (carForm.controls['door_count'].invalid && carForm.controls['door_count'].dirty){
+                            <span class="text-danger">Door Count is required!</span>
+                        }
+                      </div>
+
+
+                      <div class="mb-3">
+                        <label for="image_car" class="form-label">Image Car <sup class="text-danger">*</sup></label>
+                        <div class="row">
+                          <div class="col-8">
+                            <!-- <input
+                              type="text"
+                              class="form-control"
+                              id="image_car"
+                              formControlName="image_car"
+                              [ngClass]="{
+                                'is-invalid': carForm.controls['image_car'].invalid && carForm.controls['image_car'].dirty,
+                                'is-valid': carForm.controls['image_car'].valid
+                              }"
+                            /> -->
+
+                            <input type="file" class="form-control" (change)="uploadImage($event)">
+
+                            <div class="card-light dotted" appUpload (onFileDropped)="uploadImage($event)">
+                                Drop a file.
+                            </div>
+
+                          </div>
+                          <div class="col-4">
+                            <img
+                              [src]="carDetails?.image_car" [alt]=" carDetails?.name " class="img-fluid"
+                            />
+                          </div>
+                        </div>
+                      
+                        @if (carForm.controls['image_car'].invalid && carForm.controls['image_car'].dirty) {
+                          <span class="text-danger">Image Car is required!</span>
+                        }
+                      </div>
+
+
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Price <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="price" formControlName="price"                        
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['price'].invalid && carForm.controls['price'].dirty,
+                            'is-valid':carForm.controls['price'].valid
+                        }" >
+                        @if (carForm.controls['price'].invalid && carForm.controls['price'].dirty){
+                            <span class="text-danger">Price is required!</span>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Description <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="description" formControlName="description"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['description'].invalid && carForm.controls['description'].dirty,
+                            'is-valid':carForm.controls['description'].valid
+                        }" >
+                        @if (carForm.controls['description'].invalid && carForm.controls['description'].dirty){
+                            <span class="text-danger">Description is required!</span>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="desc_excerpt" class="form-label">Desc Excerpt <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="desc_excerpt" formControlName="desc_excerpt"                        
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['desc_excerpt'].invalid && carForm.controls['desc_excerpt'].dirty,
+                            'is-valid':carForm.controls['desc_excerpt'].valid
+                        }" >
+                        @if (carForm.controls['desc_excerpt'].invalid && carForm.controls['desc_excerpt'].dirty){
+                            <span class="text-danger">Desc Excerpt is required!</span>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="date_online" class="form-label">Date Online <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="date_online" formControlName="date_online"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['date_online'].invalid && carForm.controls['date_online'].dirty,
+                            'is-valid':carForm.controls['date_online'].valid
+                        }" >
+                        @if (carForm.controls['date_online'].invalid && carForm.controls['date_online'].dirty){
+                            <span class="text-danger">Date Online is required!</span>
+                        }
+                      </div>   
+
+                      <div class="mb-3">
+                        <label for="date_offline" class="form-label">Date Offline <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="date_offline" formControlName="date_offline"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['date_offline'].invalid && carForm.controls['date_offline'].dirty,
+                            'is-valid':carForm.controls['date_offline'].valid
+                        }" >
+                        @if (carForm.controls['date_offline'].invalid && carForm.controls['date_offline'].dirty){
+                            <span class="text-danger">Date Offline is required!</span>
+                        }
+                      </div>  
+
+                      <div class="mb-3">
+                        <label for="currency" class="form-label">Currency <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="currency" formControlName="currency"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['currency'].invalid && carForm.controls['currency'].dirty,
+                            'is-valid':carForm.controls['currency'].valid
+                        }" >
+                        @if (carForm.controls['currency'].invalid && carForm.controls['currency'].dirty){
+                            <span class="text-danger">Currency is required!</span>
+                        }
+                      </div>  
+
+                      <div class="mb-3">
+                        <label for="contact_phone" class="form-label">Contact Phone <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="contact_phone" formControlName="contact_phone"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['contact_phone'].invalid && carForm.controls['contact_phone'].dirty,
+                            'is-valid':carForm.controls['contact_phone'].valid
+                        }" >
+                        @if (carForm.controls['contact_phone'].invalid && carForm.controls['contact_phone'].dirty){
+                            <span class="text-danger">Contact Phone is required!</span>
+                        }
+                      </div>  
+
+                      <div class="mb-3">
+                        <label for="contact_email" class="form-label">Contact Email <sup class="text-danger">*</sup> </label>
+                        <input type="text" class="form-control" id="contact_email" formControlName="contact_email"
+                        [ngClass]="{
+                            'is-invalid':carForm.controls['contact_email'].invalid && carForm.controls['contact_email'].dirty,
+                            'is-valid':carForm.controls['contact_email'].valid
+                        }" >
+                        @if (carForm.controls['contact_email'].invalid && carForm.controls['contact_email'].dirty){
+                            <span class="text-danger">Contact Email is required!</span>
+                        }
+
+                        <!-- @if (){
+
+                        } -->
+
+                      </div>  
+
+                      <p>car Form: {{carForm.value | json}}</p>
+
+                      <p>Errors: {{carForm.controls['contact_email'].errors | json}}</p>
+
+                      @if (!carSlug){
+                       <!-- or !carForm.valid -->
+                      <button class="btn btn-success" (click)="saveCar()" [disabled]="carForm.invalid">   
+                        <i class="fa fa-plus me-2"></i>
+                        Add</button>
+                      } @else {
+                        <button class="btn btn-primary" (click)="editCar()" [disabled]="carForm.invalid">   
+                            <i class="fa fa-pencil me-2"></i>
+                            Edit</button>
+                      }
+                        <button class="btn btn-warning ms-3" [routerLink]="['/cars']">
+                            <i class="fa fa-times"></i>
+                            Cancel
+                        </button>
+                </form>
+            </div>
+        }
+    </div>
+</div>

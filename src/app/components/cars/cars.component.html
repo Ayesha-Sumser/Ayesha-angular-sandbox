@@ -1,0 +1,57 @@
+<!-- Displaying a list of cars  -->
+<!-- .container.my-5>.row.row-cols-3.g-4>col>.card>.card-body -->
+<div class="container my-5">
+<!-- search bar -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="input-group ">
+                <span class="input-group-text" (click)="searchCar()">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Search car" [(ngModel)]="searchText">
+                <span class="input-group-text" (click)="clearSearch()">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row my-3">
+        <div class="col">
+            <ng-template #btnSwitch>
+                <p>Switch view between <span class="fw-bold">Card</span> and <span class="fw-bold">Table</span></p>   
+            </ng-template>
+            <button class="btn btn-outline-primary" (click)="toggle()" [tooltip]="btnSwitch">Toggle View</button>
+        </div>
+        <div class="col text-end">
+            <button class="btn btn-outline-success" [routerLink]="['/car/add']">
+               <i class="fa fa-plus"></i>
+                Car
+            </button>
+
+        </div>
+    </div>
+
+    @if (isCardVisible){
+    <div class="card-container mb-5">
+        @if(filterCarList){
+       <app-card-list-template [list]="filterCarList"></app-card-list-template>
+        }@else{
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-center">There are currently no cars</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    } @else {
+    <div class="table-container mb-5">
+        <app-table-list-template [list]="filterCarList"></app-table-list-template>
+    </div>
+    }
+</div>

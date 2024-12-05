@@ -1,0 +1,28 @@
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">Welcome</div>
+        <div class="card-body">
+            @if(profileForm){
+                <form [formGroup]="profileForm" >
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control mb-3" formControlName="firstName" id ="firstName">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control mb-3" formControlName="lastName" id="lastName">
+                    <label for="email">email</label>
+                    <input type="text" class="form-control mb-3" formControlName="email" id="email">
+                    <label for="phone">phone</label>
+                    <input type="text" class="form-control mb-3" formControlName="phone" id="phone">
+                </form>
+                <label for="theme">theme</label>
+                <select name="" id="" class="form-control" [(ngModel)]="selectedTheme" (change)="updateTheme()">
+                    <option value="dark">Dark</option>
+                    <option value="blue">Blue</option>
+                    <option value="danger">Danger</option>
+                    <option value="purple">Purple</option>
+                    <option value="cyan">cyan</option>
+                    <option value="pink">pink</option>
+                </select>
+            }
+        </div>
+    </div>
+</div>
